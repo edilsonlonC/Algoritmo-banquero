@@ -1,4 +1,4 @@
-E = [4,2,3,1]
+""" E = [4,2,3,1]
 A = [2,1,0,0]
 
 R = [
@@ -11,7 +11,33 @@ C = [
     [2,0,0,1],
     [0,1,2,0]
 ]
+ """
 
+E = [6,3,4,2]
+A = [4,0,2,0]
+
+C = [
+    [3,0,0,1], #PA
+    [0,1,0,0], #PB
+    [1,1,1,0], #PC
+    [1,1,0,1],
+    [0,0,0,0]
+    ]
+R = [
+    [1,1,0,0],
+    [0,1,1,2],
+    [3,1,0,0],
+    [0,0,1,0],
+    [2,1,1,0]
+]
+ 
+def hallarA ():
+    sum = 0
+    for i in range(0,len(R)):
+        for j in range(0,len(R[i])):
+            sum = sum + R[j][i]
+        print sum 
+    
 def verificarBloqueo (): 
     for Ri in R:
         for Rj in Ri:
@@ -71,4 +97,4 @@ if __name__ == "__main__":
         print ('R = ', R)
         print ('C = ', C)
         print ('A =' , A)
-        
+       
