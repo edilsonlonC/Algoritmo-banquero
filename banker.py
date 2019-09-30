@@ -14,10 +14,10 @@ C = [
  """
 
 E = [6,3,4,2]
-A = [4,0,2,0]
+
 
 C = [
-    [3,0,0,1], #PA
+    [3,0,1,1], #PA
     [0,1,0,0], #PB
     [1,1,1,0], #PC
     [1,1,0,1],
@@ -30,13 +30,21 @@ R = [
     [0,0,1,0],
     [2,1,1,0]
 ]
+
+def sumVa(n):
+    sum = 0
+    for i in range(len(C)): 
+        sum = sum + C[i][n]
+    return sum
  
 def hallarA ():
-    sum = 0
-    for i in range(0,len(R)):
-        for j in range(0,len(R[i])):
-            sum = sum + R[j][i]
-        print sum 
+    B=[]
+    for i in range(len(C[0])):
+       B.append(sumVa(i))
+    for i in range(len(C[0])):
+        B[i] = E[i] - B[i]
+    return B 
+
     
 def verificarBloqueo (): 
     for Ri in R:
@@ -80,7 +88,8 @@ def main ():
 
 if __name__ == "__main__":
 
-    while True:
+    A = hallarA()
+    while True:      
         n = comparar()
         if (n == -1 and verificarBloqueo()):
             print "bloqueo"
@@ -91,10 +100,12 @@ if __name__ == "__main__":
             break
         C[n] = map(addition,R[n],C[n])
         A = map(subtract,A,R[n])
+        print ('A =' , A)
         A = map(addition,C[n],A)
+        print ('A =' , A)
         R[n] = map(eliminarRecursos,R[n])
         C[n] = map(eliminarRecursos,R[n])
         print ('R = ', R)
         print ('C = ', C)
         print ('A =' , A)
-       
+       # hallarA()
